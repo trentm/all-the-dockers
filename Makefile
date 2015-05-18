@@ -7,11 +7,12 @@ ifeq ($(shell uname -s),Darwin)
 else
 	SUDO:=sudo
 endif
+DOCKER ?= docker
 
 .PHONY: all
 all:
-	$(SUDO) docker build -t trentm/all-the-dockers .
+	$(SUDO) $(DOCKER) build -t trentm/all-the-dockers .
 
 .PHONY: publish
 publish:
-	$(SUDO) docker push trentm/all-the-dockers:latest
+	$(SUDO) $(DOCKER) push trentm/all-the-dockers:latest
